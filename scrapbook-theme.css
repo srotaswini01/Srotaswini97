@@ -1,0 +1,92 @@
+/* Scrapbook design language, applied over the existing pages.
+   Restyles only: no content, structure or image changes. */
+:root {
+  --sb-sky: #DCEBF4;
+  --sb-mist: #F1F5F4;
+  --sb-ink: #16151A;
+  --sb-ink-soft: #5B5650;
+  --sb-line: #E7E1D7;
+  --sb-orange: #F95C4B;
+  --sb-powder: #F2F7FC;
+  --sb-butter: #FDFAEA;
+  --sb-blush: #FDF3F6;
+  --sb-sage: #F3F8EF;
+  --sb-lilac: #ECE6F9;
+  --sb-display: 'Bricolage Grotesque', 'Uncut Sans', 'Helvetica Neue', system-ui, sans-serif;
+  --sb-body: 'Instrument Sans', system-ui, sans-serif;
+}
+
+/* page ground and type */
+body, body > div[style*="background: #FDFCF8"], .cs { background: #FFFFFF !important; color: var(--sb-ink); }
+body > div, .cs { font-family: var(--sb-body) !important; }
+h1, h2, h3, h4,
+[style*="font-family: 'Uncut Sans'"],
+.cs-h3, .cs-big, .cs-meta-value, .cs-role-name, .ch-title {
+  font-family: var(--sb-display) !important;
+}
+h1 { font-weight: 600 !important; letter-spacing: -.032em !important; line-height: 1.14 !important; }
+h2 { font-weight: 600 !important; letter-spacing: -.03em !important; }
+h3 { letter-spacing: -.025em !important; }
+
+/* header band: soft sky gradient like the landing page */
+div:has(> nav) {
+  background: linear-gradient(180deg, var(--sb-sky) 0%, var(--sb-mist) 58%, #FFFFFF 100%) !important;
+  border-bottom: 0 !important;
+}
+
+/* frosted pill navigation */
+nav {
+  background: rgba(255, 255, 255, .62) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, .9) !important;
+  box-shadow: 0 6px 24px rgba(22, 21, 26, .06) !important;
+}
+nav a[style*="color: #F95C4B"] { color: var(--sb-ink) !important; font-weight: 600; }
+
+/* pill buttons */
+a[style*="border-radius: 999px"][style*="border: 1px solid #101010"],
+.hv-ink { border-color: var(--sb-ink) !important; transition: transform .2s ease, background .2s ease, color .2s ease; }
+a[style*="border-radius: 999px"][style*="border: 1px solid #101010"]:hover,
+.hv-ink:hover { transform: translateY(-1px); background: var(--sb-ink) !important; color: #FFFFFF !important; }
+a[style*="background: #101010"][style*="border-radius: 999px"]:hover { background: var(--sb-orange) !important; }
+
+/* section labels in the accent colour */
+section > div:first-child[style*="text-transform: uppercase"],
+.cs-eyebrow,
+div[style*="letter-spacing: .1em"][style*="text-transform: uppercase"][style*="color: #8c8577"]:not(aside div) {
+  color: var(--sb-orange) !important;
+}
+
+/* case study meta strip and callouts */
+.cs-meta { border-radius: 24px !important; border-color: var(--sb-line) !important; }
+.cs-meta-label { color: var(--sb-orange) !important; }
+.cs-callout { border-radius: 24px !important; }
+.cs-metrics { border-radius: 24px !important; }
+
+/* soft pastel cards, colour-coded like the project rows */
+.cs-card, .cs-panel { border-radius: 24px !important; border: 0 !important; }
+.cs-card:nth-of-type(4n+1) { background: var(--sb-powder) !important; }
+.cs-card:nth-of-type(4n+2) { background: var(--sb-butter) !important; }
+.cs-card:nth-of-type(4n+3) { background: var(--sb-blush) !important; }
+.cs-card:nth-of-type(4n+4) { background: var(--sb-sage) !important; }
+.cs-panel { background: var(--sb-powder) !important; }
+div[style*="background: #F6F5F2"][style*="border-radius"]:not(:has(img)):not(:has(.islot)) { background: var(--sb-mist) !important; }
+
+/* tinted bands (Know Me experiences, etc.) */
+div[style*="background: #F3F0E9"]:not(:has(> nav)) { background: linear-gradient(180deg, #FFFFFF 0%, var(--sb-mist) 18%, var(--sb-mist) 82%, #FFFFFF 100%) !important; }
+
+/* pull quotes */
+div[style*="border-left: 2px solid #F95C4B"] { border-left-width: 3px !important; }
+
+/* closing call-to-action band */
+div[style*="border-top: 1px solid #E3DBCC"][style*="padding: 56px 0 64px"] {
+  border-top: 0 !important;
+  background: linear-gradient(135deg, var(--sb-blush) 0%, var(--sb-powder) 100%);
+  border-radius: 28px;
+  padding: 44px clamp(24px, 4vw, 48px) 48px !important;
+  margin-bottom: 48px;
+}
+
+/* "On this page" sidebar keeps its own active state */
+aside a { font-family: var(--sb-body) !important; }
